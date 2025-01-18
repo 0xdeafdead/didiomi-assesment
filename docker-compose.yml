@@ -1,0 +1,10 @@
+services:
+  message-broker:
+    image: rabbitmq:latest
+    ports:
+      - 5672:5672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+volumes:
+  rabbitmq_data:
+    driver: local
