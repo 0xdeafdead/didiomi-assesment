@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/didiomi-challenge/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/didiomi-challenge/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/didiomi-challenge",
+  "projects": {
+    "didiomi-challenge": {
+      "type": "application",
+      "root": "apps/didiomi-challenge",
+      "entryFile": "main",
+      "sourceRoot": "apps/didiomi-challenge/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/didiomi-challenge/tsconfig.app.json"
+      }
+    },
+    "consent-manager": {
+      "type": "application",
+      "root": "apps/consent-manager",
+      "entryFile": "main",
+      "sourceRoot": "apps/consent-manager/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/consent-manager/tsconfig.app.json"
+      }
+    }
   }
 }
