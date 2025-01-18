@@ -17,24 +17,24 @@ export class UserService {
     return this.users;
   }
 
-  findOne(email: string) {
-    const user = this.users.find((u) => u.email === email);
+  findOne(id: string) {
+    const user = this.users.find((u) => u.id === id);
     if (!user) {
-      throw new NotFoundException(`User with email ${email} not found.`);
+      throw new NotFoundException(`User with id ${id} not found.`);
     }
     return user;
   }
 
-  remove(email: string) {
+  remove(id: string) {
     let index: number;
     const user = this.users.find((user, i) => {
-      if (user.email === email) {
+      if (user.id === id) {
         index = i;
         return user;
       }
     });
     if (!user) {
-      throw new NotFoundException(`User with email ${email} does not exists`);
+      throw new NotFoundException(`User with id ${id} does not exists`);
     }
     this.users.splice(index, 1);
     return true;

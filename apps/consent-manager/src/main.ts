@@ -10,6 +10,8 @@ async function bootstrap() {
       options: {
         urls: ['amqp://localhost:5672'],
         queue: 'consent_changes',
+        noAck: false,
+        prefetchCount: 1,
         queueOptions: {
           durable: true,
         },
