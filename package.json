@@ -10,6 +10,7 @@
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start:users": "nest start didiomi-challenge --watch",
     "start:consent": "nest start consent-manager --watch",
+    "start:logger": "nest start log-manager --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/didiomi-challenge/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",

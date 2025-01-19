@@ -36,6 +36,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/prisma/tsconfig.lib.json"
       }
+    },
+    "log-manager": {
+      "type": "application",
+      "root": "apps/log-manager",
+      "entryFile": "main",
+      "sourceRoot": "apps/log-manager/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/log-manager/tsconfig.app.json"
+      }
     }
   }
 }

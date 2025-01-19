@@ -26,8 +26,8 @@ export default class CreateEventDTO {
   @ValidateNested()
   @Type(() => User)
   user: User;
+  @IsArray()
   @ValidateNested()
-  @IsArray({ each: true })
   @Type(() => Consent)
   consents: Consent[];
 }
