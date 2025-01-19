@@ -1,5 +1,7 @@
+import { CONSENT_TYPES } from '@prisma/client';
+
 interface Consent {
-  id: string;
+  id: CONSENT_TYPES;
   enabled: boolean;
 }
 

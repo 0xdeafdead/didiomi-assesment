@@ -1,8 +1,13 @@
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import CreateEventDTO from './dto/create-event.dto';
 import { ClientProxy } from '@nestjs/microservices';
-import { of, switchMap } from 'rxjs';
+import { catchError, map, Observable, switchMap, tap, throwError } from 'rxjs';
 
 @Injectable()
 export class EventsService {
@@ -11,13 +16,18 @@ export class EventsService {
     private readonly userService: UserService,
   ) {}
 
-  generateConsentChange(input: CreateEventDTO) {
-    const { user, consents } = input;
+  generateConsentChange(input: CreateEventDTO): Observable<boolean> {
+    const { user } = input;
     //validate user existence
-    const existinUser = this.userService.findOne(user.id);
-    return this.client.emit('consent_change', input).pipe(
-      switchMap((res) => {
-        return of(existinUser);
+    return this.userService.findOne(user.id).pipe(
+      tap(() => this.client.emit('consent_change', input)),
+      map(() => true),
+      catchError((err) => {
+        return throwError(() =>
+          err instanceof HttpException
+            ? err
+            : new InternalServerErrorException(err.message),
+        );
       }),
     );
   }

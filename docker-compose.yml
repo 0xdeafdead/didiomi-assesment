@@ -1,11 +1,32 @@
 services:
   message-broker:
+    restart: always
     image: rabbitmq:4-management
     ports:
       - 5672:5672
       - 15672:15672
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+
+  users_db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: please
+      POSTGRES_PASSWORD: hireMe
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 volumes:
   rabbitmq_data:
+    driver: local
+  pg_data:
     driver: local

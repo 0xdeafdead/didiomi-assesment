@@ -1,19 +1,33 @@
-import { IsArray, IsBoolean, IsEmail, IsString } from 'class-validator';
+import { CONSENT_TYPES } from '@prisma/client';
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsBoolean,
+  IsEnum,
+  IsNotEmpty,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 
 class Consent {
-  @IsString()
-  id: string;
+  @IsEnum(CONSENT_TYPES)
+  id: CONSENT_TYPES;
   @IsBoolean()
   enabled: boolean;
 }
 
 class User {
   @IsString()
+  @IsNotEmpty()
   id: string;
 }
 
 export default class CreateEventDTO {
-  user: { id: string };
-  @IsArray()
+  @ValidateNested()
+  @Type(() => User)
+  user: User;
+  @ValidateNested()
+  @IsArray({ each: true })
+  @Type(() => Consent)
   consents: Consent[];
 }
