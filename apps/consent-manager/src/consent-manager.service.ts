@@ -20,7 +20,7 @@ export class ConsentManagerService {
     });
   }
   async queueEvent(data: Event): Promise<boolean> {
-    await this.wait(10000);
+    // await this.wait(10000);
     const { user, consents } = data;
     try {
       await this.prismaService.$transaction(
