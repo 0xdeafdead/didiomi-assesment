@@ -9,7 +9,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { randomUUID } from 'crypto';
 import { PrismaService } from '@app/prisma';
 import { catchError, from, Observable, of, switchMap, throwError } from 'rxjs';
-import { Prisma, User } from '@prisma/client';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserService {
