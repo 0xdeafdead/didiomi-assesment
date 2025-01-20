@@ -1,4 +1,4 @@
-# Didiomi Assessment
+# Didomi Assessment
 
 This project is a **NestJS** starter application written in TypeScript, designed for efficient and scalable server-side development.
 
