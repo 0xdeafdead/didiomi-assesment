@@ -4,13 +4,11 @@ import {
   Logger,
 } from '@nestjs/common';
 import Event from '../types/event';
-import { catchError, from, Observable, of, switchMap, throwError } from 'rxjs';
-import { RmqContext } from '@nestjs/microservices';
 import { PrismaService } from '@app/prisma';
 
 @Injectable()
 export class ConsentManagerService {
-  logger = new Logger('COnsentManagerService');
+  logger = new Logger('ConsentManagerService');
   constructor(private readonly prismaService: PrismaService) {}
 
   //To simulate a really heavy processing function

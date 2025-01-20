@@ -8,7 +8,7 @@ export class LogManagerController {
   constructor(private readonly logManagerService: LogManagerService) {}
 
   @EventPattern('on_consent_changed')
-  async logg(
+  async logEvent(
     @Payload()
     input: EventRegister,
   ) {

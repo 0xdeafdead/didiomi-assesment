@@ -4,7 +4,6 @@ import { ConsentChange } from '../schemas/user_consent.schema';
 import { Model } from 'mongoose';
 import { EventRegister } from './types';
 import { RpcException } from '@nestjs/microservices';
-import { randomUUID } from 'crypto';
 
 @Injectable()
 export class LogManagerService {

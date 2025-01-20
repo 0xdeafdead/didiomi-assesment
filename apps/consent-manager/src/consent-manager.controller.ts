@@ -17,21 +17,26 @@ export class ConsentManagerController {
   ) {}
 
   @EventPattern('consent_change')
-  changeConsent(@Payload() data: Event, @Ctx() context: RmqContext) {
+  async changeConsent(
+    @Payload() data: Event,
+    @Ctx() context: RmqContext,
+  ): Promise<boolean> {
     const channe = context.getChannelRef();
     const ogmessage = context.getMessage();
-    this.consentManagerService
+    return this.consentManagerService
       .queueEvent(data)
-      .then(() => {
+      .then((res) => {
         channe.ack(ogmessage);
         this.client.emit('on_consent_changed', {
           requestedBy: 'system',
           updatedAt: Date.now(),
           data,
         });
+        return res;
       })
       .catch(() => {
         channe.nack(ogmessage);
+        return false;
       });
   }
 }
