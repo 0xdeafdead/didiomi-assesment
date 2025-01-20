@@ -8,6 +8,11 @@ This project is a **NestJS** starter application written in TypeScript, designed
 - Ready-to-use setup for developing RESTful APIs and backend services.
 - Includes testing configuration and scripts.
 
+## Intended Software Architecture
+![didiomi-code-challenge drawio](https://github.com/user-attachments/assets/e58e2d60-9049-47c4-a334-663a62e508a8)
+
+
+
 ## Prerequisites
 
 - **Node.js** and **pnpm** installed globally.
