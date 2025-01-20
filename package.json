@@ -6,21 +6,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
-    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start:users": "nest start user-manager --watch",
     "start:consent": "nest start consent-manager --watch",
     "start:logger": "nest start log-manager --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/apps/user-manager/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test:users": "jest user-manager",
     "test:consent": "jest consent-manager",
-    "test:logger": "jest log-manager",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/user-manager/test/jest-e2e.json"
+    "test:logger": "jest log-manager"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
