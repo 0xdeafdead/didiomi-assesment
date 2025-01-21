@@ -1,6 +1,7 @@
 # Didomi Assessment
 
 This project is a **NestJS** starter application written in TypeScript, designed for efficient and scalable server-side development.
+This project was develop to comply with [Didomi Backend Challenge](https://github.com/didomi/challenges/tree/master/backend)
 
 ## Features
 
